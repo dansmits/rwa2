@@ -1,0 +1,18 @@
+<launch>
+    <!-- arguments to spawn robot in world -->
+    <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+    <arg name="x_pos" default="-2.0"/>
+    <arg name="y_pos" default="0.0"/>
+    <arg name="z_pos" default="0.0"/>
+    <arg name="visual" default="false"/>
+
+    <!-- Gazebo world to spawn turtlebot in -->
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_world.launch"></include>
+
+    <!-- node for controller -->
+    <node pkg="rwa2-Smits"
+    type="my_bot_controller.py"
+    name="my_bot_controller"
+    required="true"
+    output="screen"/>
+</launch>
